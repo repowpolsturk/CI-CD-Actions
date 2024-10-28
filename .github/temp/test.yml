@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16, 18, 20, 22]
+        os: [kali]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
