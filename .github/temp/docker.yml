@@ -1,0 +1,23 @@
+name: Docker 
+on: 
+    push: 
+        branches: [main]
+jobs: 
+    build: 
+        runs-on: self-hosted
+        steps:
+           - name: Set up QEMU
+             uses: docker/setup-qemu-action@v3
+           - name: Set up Docker Buildx
+             uses: docker/setup-buildx-action@v3
+           - name: Login to Docker Hub
+             uses: docker/login-action@v3
+             with:
+               username: ${{ vars.DOCKERHUB_USERNAME }}
+               password: ${{ secrets.DOCKERHUB_TOKEN }}
+           - name: Build and push
+             uses: docker/build-push-action@v6
+             with:
+               push: truessh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDMP6BnCnhyXqFxQXYXn82ruNhZ3xc1a+rvCsJTC1W6WpiY8mNvwywqUZDL4cuUB3Df360au9Ragi60KC/ssh9RZrUeKaKVoUMPb0rMSw86+41bO9I2pfwf4Zx5A/EnD5tMnUA6jFdetmaw1uUuPCzw6b0DlPSRXllkOteDs9zOsnkR+i4BnFtTe7Pxv7qAixOXxgqjFspyAqW/BSu3wBeHxyqvI7tZsWDaaoTTtfOedtm+p7pacLKkezJBidawys902d3VybUIEhmgaCW4U704kYU0C5m5N2EipDR2rI/tMnx7bFUL/7GzMh8tJWjjjHGFp2O12n1pfNvgAX6wLFI1/BiapTJrwaIm4LbBhl0kHBmmtThmuzP6xxvYRC3n62eDX8tfvQyooScIR23jK1INScVyontOiea4UjJOSJDxOi6eRQL2tUd88SjjLcVDaLwZw9MwVl9TZ2+zbTAbZdiw3f1AziRqNToB2Dk2byUgEcHhDvG7nKKW7/Um8MYfP83j2vpUYs7AzbdzOXpQiwAlOgYoIyucoZkus443eyhGSeFeB5uIW0Zc3KI0N4IXEtQLUOzlP4af+FFLshVJcswh0NFnBEx4FWYH2535RrJC4aOz9yspGezyhQkPXHPpRx3vc5B9ei0U2U42AqRkaHXeDBRs3JnykygK2XbFgKaPJQ== repowpolsturk16@gmail.com
+
+               tags: repowpols/cicd_github_actions:latest    
